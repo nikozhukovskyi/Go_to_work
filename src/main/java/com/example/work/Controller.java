@@ -2,12 +2,43 @@ package com.example.work;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 
-public class Controller {
+public class Controller extends Application{
+    static String nameProgram;
+
+    static void errorAlert(String Errores){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Have an Error");
+        alert.setHeaderText(Errores + " ");
+        alert.setContentText("Швидше за все, програма не інстальована або не вірний шлях");
+        alert.showAndWait().ifPresent(wait -> {
+            if (wait == ButtonType.OK) {
+                System.out.println("Pressed OK.");
+            }
+        });
+    }
+    static void iNFORM(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Have an INFORMATION");
+        alert.setHeaderText("Дані збережено у файлі.");
+        alert.showAndWait().ifPresent(wait -> {
+        });
+    }
+
+
+    @FXML
+    void minimized(MouseEvent event){
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.setIconified(true);
+    }
 
    @FXML
     void close(MouseEvent event){
@@ -16,53 +47,179 @@ public class Controller {
        stage.close();
     }
 
-    @FXML
-    void StartANY() {
-        Runtime rs = Runtime.getRuntime();
+    public static void saveDataToFile(String data) {
+
+       String user = System.getProperty("user.name");
+
+        System.out.println();
         try {
-            rs.exec("C:/Program Files (x86)/AnyDesk/AnyDesk.exe");
+            File file = new File("C:/Users/" + user + "/Documents/" + nameProgram + ".txt");
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.write(data);
+
+            bufferedWriter.close();
+            fileWriter.close();
+            iNFORM();
         } catch (IOException e) {
-            System.out.println(e+" \\ "+" Nima");
+            errorAlert(e.getMessage());
         }
     }
 
-    @FXML
-    void StartRDS() {
-        Runtime rs = Runtime.getRuntime();
+
+    public static String readDataFromFile() {
+
+        String user = System.getProperty("user.name");
+
+        StringBuilder content = new StringBuilder();
         try {
-            rs.exec("cmd.exe /C C:/Users/Nico/Documents/festRDS.rdp");
+            File file = new File("C:/Users/" + user + "/Documents/" + nameProgram + ".txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                content.append(line); // Додавання рядка до змінної content
+            }
+
+                bufferedReader.close();
+                fileReader.close();
+
+
         } catch (IOException e) {
-            System.out.println(e+" \\ "+" Nima");
+            errorAlert(e.getMessage());
         }
+        return content.toString();
+    }
+
+    public void chose(MouseEvent event){
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        FileChooser.ExtensionFilter ex1 = new FileChooser.ExtensionFilter("*.ExE type ", "*.exe");
+        FileChooser.ExtensionFilter ex2 = new FileChooser.ExtensionFilter("*.RDP type ", "*.rdp");
+
+
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("open program");
+        fileChooser.getExtensionFilters().addAll(ex1, ex2);
+        fileChooser.setInitialDirectory(new File("C:\\Program Files"));
+
+        File selectedfile = fileChooser.showOpenDialog(stage);
+
+        String path;
+        assert selectedfile != null;
+        path = selectedfile.getPath();
+
+        saveDataToFile(path); // зберігає шлях
+    }
+    @FXML
+    public String StartANY(MouseEvent event) {
+        nameProgram = "pathAnyDesk";
+
+        String fileData = readDataFromFile(); // Отримання даних з файлу
+
+        if (fileData.equals("")){
+            chose(event);
+        } else {
+            Runtime rs = Runtime.getRuntime();
+            try {
+                rs.exec(  fileData + " ");
+            } catch (IOException e) {
+                errorAlert(e.getMessage());
+            }
+        }
+
+return nameProgram;
+
     }
 
     @FXML
-    void StartSkype() {
-        Runtime rs = Runtime.getRuntime();
-        try {
-            rs.exec("C:/Program Files (x86)/Microsoft/Skype for Desktop/Skype.exe");
-        } catch (IOException e) {
-            System.out.println(e+" \\ "+" Nima");
+    String StartRDS(MouseEvent event) {
+        nameProgram = "pathRDS";
+        String fileData = readDataFromFile(); // Отримання даних з файлу
+        if (fileData.equals("")){
+            chose(event);
+        } else {
+            Runtime rs = Runtime.getRuntime();
+            try {
+                rs.exec(  "cmd.exe /C" + fileData);
+            } catch (IOException e) {
+                errorAlert(e.getMessage());
+            }
         }
+        return nameProgram;
+    }
+
+
+    @FXML
+    String StartSkype(MouseEvent event) {
+        nameProgram = "pathSkype";
+        String fileData = readDataFromFile(); // Отримання даних з файлу
+
+        if (fileData.equals("")){
+            chose(event);
+        } else {
+            Runtime rs = Runtime.getRuntime();
+            try {
+                rs.exec(  fileData + " ");
+            } catch (IOException e) {
+                errorAlert(e.getMessage());
+            }
+        }
+
+        return nameProgram;
+       
     }
     @FXML
-    void StartTG() {
-        Runtime rs = Runtime.getRuntime();
-        try {
-            rs.exec("C:/Users/Nico/AppData/Roaming/Telegram Desktop/Telegram.exe");
-        } catch (IOException e) {
-            System.out.println(e+" \\ "+" Nima");
+    String StartTG(MouseEvent event) {
+        nameProgram = "pathTelegram";
+        String fileData = readDataFromFile(); // Отримання даних з файлу
+        if (fileData.equals("")){
+            chose(event);
+        } else {
+            Runtime rs = Runtime.getRuntime();
+            try {
+                rs.exec(  fileData + " ");
+            } catch (IOException e) {
+                errorAlert(e.getMessage());
+            }
         }
+        return nameProgram;
     }
 
     @FXML
-    void StartTeamView() {
-        Runtime rs = Runtime.getRuntime();
-        try {
-            rs.exec("C:/Program Files/TeamViewer/TeamViewer.exe");
-        } catch (IOException e) {
-            System.out.println(e+" \\ "+" Nima");
+    String StartSteam(MouseEvent event){
+        nameProgram = "pathSteam";
+        String fileData = readDataFromFile(); // Отримання даних з файлу
+        if (fileData.equals("")){
+            chose(event);
+        } else {
+            Runtime rs = Runtime.getRuntime();
+            try {
+                rs.exec(  fileData + " ");
+            } catch (IOException e) {
+                errorAlert(e.getMessage());
+            }
         }
+        return nameProgram;
     }
 
+    @FXML
+    String StartTeamView(MouseEvent event) {
+        nameProgram = "pathTeamVieW";
+        String fileData = readDataFromFile(); // Отримання даних з файлу
+        if (fileData.equals("")){
+            chose(event);
+        } else {
+            Runtime rs = Runtime.getRuntime();
+            try {
+                rs.exec(  fileData + " ");
+            } catch (IOException e) {
+                errorAlert(e.getMessage());
+            }
+        }
+        return nameProgram;
+    }
 }

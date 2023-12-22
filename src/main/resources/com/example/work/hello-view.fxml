@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="395.0" styleClass="backgroundAnchor" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.work.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="390.0" styleClass="backgroundAnchor" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.work.Controller">
    <children>
       <ImageView fitHeight="75.0" fitWidth="88.0" layoutX="40.0" layoutY="62.0" onMouseClicked="#StartTG" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0">
          <image>
@@ -47,7 +48,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="160.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="160.0" layoutY="179.0" onMouseClicked="#StartSteam" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/steam.png" />
          </image>
@@ -55,7 +56,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="354.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="360.0" onMouseClicked="#close" opacity="0.7" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@img/clos.png" />
          </image>
@@ -63,10 +64,19 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="2.0" layoutY="3.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/move2.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="24.0" layoutX="339.0" layoutY="1.0" onMouseClicked="#minimized" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="2.0">
+         <image>
+            <Image url="@img/min.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="label" layoutX="132.0" layoutY="16.0" prefHeight="17.0" prefWidth="88.0" />
    </children>
 </AnchorPane>
