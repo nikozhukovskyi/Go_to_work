@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -15,6 +16,10 @@ public class Application extends javafx.application.Application {
     private double xOffset;
     private double yOffset;
 
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) {
         Image ico = new Image(String.valueOf(getClass().getResource("img/fest.png")));
@@ -25,6 +30,8 @@ public class Application extends javafx.application.Application {
             stage.setResizable(false);//не можна змінювати розміри панелі
             stage.getIcons().add(ico);
             stage.initStyle(StageStyle.UNDECORATED);//приховує віндовську панель close and mini\maxi mized
+            stage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
 
             //рухає панель в будь якому місці дотику
             scene.setOnMousePressed(event -> {
@@ -46,9 +53,5 @@ public class Application extends javafx.application.Application {
             System.out.println(e + "sukaa");
         }
 
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
