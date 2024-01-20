@@ -4,16 +4,86 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
 
-public class Controller extends Application{
+public class Controller extends Application {
     static String nameProgram;
+    String command;
+    ProcessBuilder build_cmd = new ProcessBuilder();
 
-    static void errorAlert(String Errores){
+    @FXML
+    public void menu_Skype() {
+        try {
+            command = "taskkill /f /fi \"imagename eq Skype.exe\" /fi \"username eq %username%\"";
+            build_cmd.command("cmd.exe", "/C", command);
+            build_cmd.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void menu_Steam() {
+        try {
+            command = "taskkill /f /fi \"imagename eq AnyDesk.exe\" /fi \"username eq %username%\"";
+            build_cmd.command("cmd.exe", "/C", command);
+            build_cmd.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void menu_TeamV() {
+        try {
+            command = "taskkill /f /fi \"imagename eq TeamViewer.exe\" /fi \"username eq %username%\"";
+            build_cmd.command("cmd.exe", "/C", command);
+            build_cmd.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void menu_any() {
+        try {
+            command = "taskkill /f /fi \"imagename eq AnyDesk.exe\" /fi \"username eq %username%\"";
+            build_cmd.command("cmd.exe", "/C", command);
+            build_cmd.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void menu_rdm() {
+        try {
+            command = "taskkill /f /fi \"imagename eq mstsc.exe\" /fi \"username eq %username%\"";
+            build_cmd.command("cmd.exe", "/C", command);
+            build_cmd.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void menu_tg() {
+        try {
+            command = "taskkill /f /fi \"imagename eq Telegram.exe\" /fi \"username eq %username%\"";
+            build_cmd.command("cmd.exe", "/C", command);
+            build_cmd.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    static void errorAlert(String Errores) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Have an Error");
         alert.setHeaderText(Errores + " ");
@@ -24,7 +94,8 @@ public class Controller extends Application{
             }
         });
     }
-    static void iNFORM(){
+
+    static void iNFORM() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Have an INFORMATION");
         alert.setHeaderText("Дані збережено у файлі.");
@@ -32,24 +103,23 @@ public class Controller extends Application{
         });
     }
 
-
     @FXML
-    void minimized(MouseEvent event){
+    void minimized(MouseEvent event) {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.setIconified(true);
     }
 
-   @FXML
-    void close(MouseEvent event){
-       final Node source = (Node) event.getSource();
-       final Stage stage = (Stage) source.getScene().getWindow();
-       stage.close();
+    @FXML
+    void close(MouseEvent event) {
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     public static void saveDataToFile(String data) {
 
-       String user = System.getProperty("user.name");
+        String user = System.getProperty("user.name");
 
         System.out.println();
         try {
@@ -67,7 +137,6 @@ public class Controller extends Application{
         }
     }
 
-
     public static String readDataFromFile() {
 
         String user = System.getProperty("user.name");
@@ -83,8 +152,8 @@ public class Controller extends Application{
                 content.append(line); // Додавання рядка до змінної content
             }
 
-                bufferedReader.close();
-                fileReader.close();
+            bufferedReader.close();
+            fileReader.close();
 
 
         } catch (IOException e) {
@@ -93,7 +162,7 @@ public class Controller extends Application{
         return content.toString();
     }
 
-    public void chose(MouseEvent event){
+    public void chose(MouseEvent event) {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         FileChooser.ExtensionFilter ex1 = new FileChooser.ExtensionFilter("*.ExE type ", "*.exe");
@@ -114,24 +183,25 @@ public class Controller extends Application{
 
         saveDataToFile(path); // зберігає шлях
     }
+
     @FXML
     public String StartANY(MouseEvent event) {
         nameProgram = "pathAnyDesk";
 
         String fileData = readDataFromFile(); // Отримання даних з файлу
 
-        if (fileData.equals("")){
+        if (fileData.equals("")) {
             chose(event);
         } else {
             Runtime rs = Runtime.getRuntime();
             try {
-                rs.exec(  fileData + " ");
+                rs.exec(fileData + " ");
             } catch (IOException e) {
                 errorAlert(e.getMessage());
             }
         }
 
-return nameProgram;
+        return nameProgram;
 
     }
 
@@ -139,12 +209,12 @@ return nameProgram;
     String StartRDS(MouseEvent event) {
         nameProgram = "pathRDS";
         String fileData = readDataFromFile(); // Отримання даних з файлу
-        if (fileData.equals("")){
+        if (fileData.equals("")) {
             chose(event);
         } else {
             Runtime rs = Runtime.getRuntime();
             try {
-                rs.exec(  "cmd.exe /C" + fileData);
+                rs.exec("cmd.exe /C" + fileData);
             } catch (IOException e) {
                 errorAlert(e.getMessage());
             }
@@ -158,30 +228,31 @@ return nameProgram;
         nameProgram = "pathSkype";
         String fileData = readDataFromFile(); // Отримання даних з файлу
 
-        if (fileData.equals("")){
+        if (fileData.equals("")) {
             chose(event);
         } else {
             Runtime rs = Runtime.getRuntime();
             try {
-                rs.exec(  fileData + " ");
+                rs.exec(fileData + " ");
             } catch (IOException e) {
                 errorAlert(e.getMessage());
             }
         }
 
         return nameProgram;
-       
+
     }
+
     @FXML
     String StartTG(MouseEvent event) {
         nameProgram = "pathTelegram";
         String fileData = readDataFromFile(); // Отримання даних з файлу
-        if (fileData.equals("")){
+        if (fileData.equals("")) {
             chose(event);
         } else {
             Runtime rs = Runtime.getRuntime();
             try {
-                rs.exec(  fileData + " ");
+                rs.exec(fileData + " ");
             } catch (IOException e) {
                 errorAlert(e.getMessage());
             }
@@ -190,15 +261,15 @@ return nameProgram;
     }
 
     @FXML
-    String StartSteam(MouseEvent event){
+    String StartSteam(MouseEvent event) {
         nameProgram = "pathSteam";
         String fileData = readDataFromFile(); // Отримання даних з файлу
-        if (fileData.equals("")){
+        if (fileData.equals("")) {
             chose(event);
         } else {
             Runtime rs = Runtime.getRuntime();
             try {
-                rs.exec(  fileData + " ");
+                rs.exec(fileData + " ");
             } catch (IOException e) {
                 errorAlert(e.getMessage());
             }
@@ -210,16 +281,17 @@ return nameProgram;
     String StartTeamView(MouseEvent event) {
         nameProgram = "pathTeamVieW";
         String fileData = readDataFromFile(); // Отримання даних з файлу
-        if (fileData.equals("")){
+        if (fileData.equals("")) {
             chose(event);
         } else {
             Runtime rs = Runtime.getRuntime();
             try {
-                rs.exec(  fileData + " ");
+                rs.exec(fileData + " ");
             } catch (IOException e) {
                 errorAlert(e.getMessage());
             }
         }
         return nameProgram;
     }
+
 }

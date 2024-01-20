@@ -24,7 +24,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) {
         Image ico = new Image(String.valueOf(getClass().getResource("img/fest.png")));
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("work.fxml")));
             Scene scene = new Scene(root);//розміри панелі в сценБілдері
             stage.setTitle("!Fest");
             stage.setResizable(false);//не можна змінювати розміри панелі
