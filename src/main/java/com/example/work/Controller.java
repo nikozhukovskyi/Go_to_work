@@ -17,6 +17,16 @@ public class Controller extends Application {
     ProcessBuilder build_cmd = new ProcessBuilder();
 
     @FXML
+    public void close_all(){
+        menu_any();
+        menu_rdm();
+        menu_Skype();
+        menu_Steam();
+        menu_tg();
+        menu_TeamV();
+    }
+
+    @FXML
     public void menu_Skype() {
         try {
             command = "taskkill /f /fi \"imagename eq Skype.exe\" /fi \"username eq %username%\"";

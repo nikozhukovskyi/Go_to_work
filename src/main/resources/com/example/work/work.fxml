@@ -1,89 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0"
-            prefWidth="390.0" styleClass="backgroundAnchor" stylesheets="@css/style.css"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.work.Controller">
-   <ImageView fitHeight="75.0" fitWidth="88.0" layoutX="40.0" layoutY="62.0" onMouseClicked="#StartTG"
-              pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="390.0" styleClass="backgroundAnchor" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.work.Controller">
+   <ImageView fitHeight="75.0" fitWidth="88.0" layoutX="40.0" layoutY="62.0" onMouseClicked="#StartTG" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/telegram.png"/>
+      <Image url="@img/telegram.png" />
    </ImageView>
-   <ImageView fitHeight="88.0" fitWidth="95.0" layoutX="34.0" layoutY="172.0" onMouseClicked="#StartTeamView"
-              pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="34.0">
+   <ImageView fitHeight="88.0" fitWidth="95.0" layoutX="34.0" layoutY="172.0" onMouseClicked="#StartTeamView" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="34.0">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/teamw.png"/>
+      <Image url="@img/teamw.png" />
    </ImageView>
-   <ImageView fitHeight="78.0" fitWidth="75.0" layoutX="279.0" layoutY="62.0" onMouseClicked="#StartANY"
-              pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="78.0" fitWidth="75.0" layoutX="279.0" layoutY="62.0" onMouseClicked="#StartANY" pickOnBounds="true" preserveRatio="true">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/anydesk.png"/>
+      <Image url="@img/anydesk.png" />
    </ImageView>
-   <ImageView fitHeight="80.0" fitWidth="75.0" layoutX="279.0" layoutY="178.0" onMouseClicked="#StartSkype"
-              pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="80.0" fitWidth="75.0" layoutX="279.0" layoutY="178.0" onMouseClicked="#StartSkype" pickOnBounds="true" preserveRatio="true">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/skype.png"/>
+      <Image url="@img/skype.png" />
    </ImageView>
-   <ImageView fitHeight="81.0" fitWidth="88.0" layoutX="157.0" layoutY="59.0" onMouseClicked="#StartRDS"
-              pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="81.0" fitWidth="88.0" layoutX="157.0" layoutY="59.0" onMouseClicked="#StartRDS" pickOnBounds="true" preserveRatio="true">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/fest.png"/>
+      <Image url="@img/fest.png" />
    </ImageView>
-   <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="160.0" layoutY="179.0" onMouseClicked="#StartSteam"
-              pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="160.0" layoutY="179.0" onMouseClicked="#StartSteam" pickOnBounds="true" preserveRatio="true">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/steam.png"/>
+      <Image url="@img/steam.png" />
    </ImageView>
-   <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="360.0" onMouseClicked="#close" opacity="0.7" pickOnBounds="true"
-              preserveRatio="true" AnchorPane.topAnchor="0.0">
+   <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="360.0" onMouseClicked="#close" opacity="0.7" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/clos.png"/>
+      <Image url="@img/clos.png" />
    </ImageView>
-   <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="2.0" layoutY="3.0" opacity="0.7" pickOnBounds="true"
-              preserveRatio="true">
-      <Image url="@img/move2.png"/>
+   <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="2.0" layoutY="3.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+      <Image url="@img/move2.png" />
    </ImageView>
-   <ImageView fitHeight="22.0" fitWidth="24.0" layoutX="339.0" layoutY="1.0" onMouseClicked="#minimized" opacity="0.5"
-              pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="2.0">
+   <ImageView fitHeight="22.0" fitWidth="24.0" layoutX="339.0" layoutY="1.0" onMouseClicked="#minimized" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="2.0">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@img/min.png"/>
+      <Image url="@img/min.png" />
    </ImageView>
-   <MenuButton layoutX="34.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0"
-               styleClass="menuBTN" stylesheets="@css/style.css" text="Close" textFill="WHITE">
+   <MenuButton layoutX="34.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" styleClass="menuBTN" stylesheets="@css/style.css" text="Close" textFill="WHITE">
       <items>
-         <MenuItem mnemonicParsing="false" onAction="#menu_tg" text="TG"/>
-         <MenuItem mnemonicParsing="false" onAction="#menu_rdm" text="RDM"/>
-         <MenuItem mnemonicParsing="false" onAction="#menu_any" text="Any"/>
-         <MenuItem mnemonicParsing="false" onAction="#menu_TeamV" text="TeamV"/>
-         <MenuItem mnemonicParsing="false" onAction="#menu_Steam" text="Steam"/>
-         <MenuItem mnemonicParsing="false" onAction="#menu_Skype" text="Skype"/>
+         <MenuItem mnemonicParsing="false" onAction="#close_all" text="Close all" />
+         <MenuItem mnemonicParsing="false" onAction="#menu_tg" text="TG" />
+         <MenuItem mnemonicParsing="false" onAction="#menu_rdm" text="RDM" />
+         <MenuItem mnemonicParsing="false" onAction="#menu_any" text="Any" />
+         <MenuItem mnemonicParsing="false" onAction="#menu_TeamV" text="TeamV" />
+         <MenuItem mnemonicParsing="false" onAction="#menu_Steam" text="Steam" />
+         <MenuItem mnemonicParsing="false" onAction="#menu_Skype" text="Skype" />
       </items>
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
       <font>
-         <Font name="Elephant Italic" size="13.0"/>
+         <Font name="Elephant Italic" size="13.0" />
       </font>
    </MenuButton>
 </AnchorPane>
