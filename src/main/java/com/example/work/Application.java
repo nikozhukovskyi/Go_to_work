@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -15,16 +16,22 @@ public class Application extends javafx.application.Application {
     private double xOffset;
     private double yOffset;
 
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) {
         Image ico = new Image(String.valueOf(getClass().getResource("img/fest.png")));
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("work.fxml")));
             Scene scene = new Scene(root);//розміри панелі в сценБілдері
             stage.setTitle("!Fest");
             stage.setResizable(false);//не можна змінювати розміри панелі
             stage.getIcons().add(ico);
             stage.initStyle(StageStyle.UNDECORATED);//приховує віндовську панель close and mini\maxi mized
+            stage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
 
             //рухає панель в будь якому місці дотику
             scene.setOnMousePressed(event -> {
@@ -46,9 +53,5 @@ public class Application extends javafx.application.Application {
             System.out.println(e + "sukaa");
         }
 
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
